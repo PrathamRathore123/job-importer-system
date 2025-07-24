@@ -16,11 +16,19 @@ const FEED_URLS = process.env.FEED_URLS ? process.env.FEED_URLS.split(',') : [
   'https://www.higheredjobs.com/rss/articleFeed.cfm'
 ];
 
-const redisConnection = new IORedis({
-  host: process.env.REDIS_HOST || '127.0.0.1',
-  port: process.env.REDIS_PORT || 6379,
-  maxRetriesPerRequest: null,
-});
+const redisConnection = new IORedis(
+  process.env.UPSTASH_REDIS_REST_URL ? {
+    host: process.env.UPSTASH_REDIS_REST_URL.replace('https://', '').replace('http://', ''),
+    port: 6379,
+    password: process.env.UPSTASH_REDIS_REST_TOKEN,
+    tls: {},
+    maxRetriesPerRequest: null,
+  } : {
+    host: process.env.REDIS_HOST || '127.0.0.1',
+    port: process.env.REDIS_PORT || 6379,
+    maxRetriesPerRequest: null,
+  }
+);
 
 const jobQueue = new Queue('job-import-queue', { connection: redisConnection });
 

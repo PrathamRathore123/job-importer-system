@@ -222,12 +222,12 @@ const App: React.FC = () => {
             {log.fetchedJobs && log.fetchedJobs.length > 0 ? (
               log.fetchedJobs.map((job, index) => (
                 <div key={index} className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                  <div className="font-medium text-gray-900">{job.title || job.summary || 'No Title'}</div>
-                  <div className="text-gray-700"><strong>Company:</strong> {job.company || job.author || 'Unknown Company'}</div>
-                  <div className="text-gray-600"><strong>Location:</strong> {job.location || job['job:location'] || 'Unknown Location'}</div>
-                  <div className="text-sm text-gray-500"><strong>Category:</strong> {job.category || job['job:category'] || 'General'}</div>
-                  <div className="text-sm text-gray-500"><strong>Job Type:</strong> {job.jobType || job['job:type'] || job.type || 'Full-time'}</div>
-                  <div className="text-xs text-gray-400"><strong>Source:</strong> {job.source || 'Unknown'}</div>
+                  <div className="font-medium text-gray-900">{String(job.title || job.summary || 'No Title')}</div>
+                  <div className="text-gray-700"><strong>Company:</strong> {String(job.company || job.author || 'Unknown Company')}</div>
+                  <div className="text-gray-600"><strong>Location:</strong> {String(job.location || job['job:location'] || 'Unknown Location')}</div>
+                  <div className="text-sm text-gray-500"><strong>Category:</strong> {String(job.category || job['job:category'] || 'General')}</div>
+                  <div className="text-sm text-gray-500"><strong>Job Type:</strong> {String(job.jobType || job['job:type'] || job.type || 'Full-time')}</div>
+                  <div className="text-xs text-gray-400"><strong>Source:</strong> {String(job.source || 'Unknown')}</div>
                   {(job.link || job.url) ? (
                     <a href={job.link || job.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
                       View Job
@@ -256,11 +256,11 @@ const App: React.FC = () => {
             <div className="space-y-4">
               {log.newJobsDetails.map((job, index) => (
                 <div key={index} className="p-4 bg-green-50 border border-green-100 rounded-lg">
-                  <div className="font-medium text-gray-900">{job.title || 'No Title'}</div>
-                  <div className="text-gray-700"><strong>Company:</strong> {job.company || 'Unknown Company'}</div>
-                  <div className="text-gray-600"><strong>Location:</strong> {job.location || 'Unknown Location'}</div>
-                  <div className="text-sm text-gray-500"><strong>Category:</strong> {job.category || 'General'}</div>
-                  <div className="text-sm text-gray-500"><strong>Job Type:</strong> {job.jobType || 'Full-time'}</div>
+                  <div className="font-medium text-gray-900">{String(job.title || 'No Title')}</div>
+                  <div className="text-gray-700"><strong>Company:</strong> {String(job.company || 'Unknown Company')}</div>
+                  <div className="text-gray-600"><strong>Location:</strong> {String(job.location || 'Unknown Location')}</div>
+                  <div className="text-sm text-gray-500"><strong>Category:</strong> {String(job.category || 'General')}</div>
+                  <div className="text-sm text-gray-500"><strong>Job Type:</strong> {String(job.jobType || 'Full-time')}</div>
                   {job.url ? (
                     <a href={job.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
                       View Job
@@ -309,12 +309,12 @@ const App: React.FC = () => {
         <div className="space-y-4">
           {log.fetchedJobs.map((job, index) => (
             <div key={index} className="p-4 bg-blue-50 border border-blue-100 rounded-lg">
-              <div className="font-medium text-gray-900">{job.title || job.summary || 'No Title'}</div>
-              <div className="text-gray-700"><strong>Company:</strong> {job.company || job.author || 'Unknown Company'}</div>
-              <div className="text-gray-600"><strong>Location:</strong> {job.location || job['job:location'] || 'Unknown Location'}</div>
-              <div className="text-sm text-gray-500"><strong>Category:</strong> {job.category || job['job:category'] || 'General'}</div>
-              <div className="text-sm text-gray-500"><strong>Job Type:</strong> {job.jobType || job['job:type'] || job.type || 'Full-time'}</div>
-              <div className="text-xs text-gray-400"><strong>Source:</strong> {job.source || 'Unknown'}</div>
+              <div className="font-medium text-gray-900">{String(job.title || job.summary || 'No Title')}</div>
+              <div className="text-gray-700"><strong>Company:</strong> {String(job.company || job.author || 'Unknown Company')}</div>
+              <div className="text-gray-600"><strong>Location:</strong> {String(job.location || job['job:location'] || 'Unknown Location')}</div>
+              <div className="text-sm text-gray-500"><strong>Category:</strong> {String(job.category || job['job:category'] || 'General')}</div>
+              <div className="text-sm text-gray-500"><strong>Job Type:</strong> {String(job.jobType || job['job:type'] || job.type || 'Full-time')}</div>
+              <div className="text-xs text-gray-400"><strong>Source:</strong> {String(job.source || 'Unknown')}</div>
               {(job.url || job.link) ? (
                 <a href={job.url || job.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
                   View Job

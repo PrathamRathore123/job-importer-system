@@ -12,15 +12,22 @@ const helmet = require('helmet');
 
 const allowedOrigins = [
   'http://localhost:3000', // for local dev
-  'https://your-frontend-domain.com' // replace with your production frontend domain
+  'https://job-importer-system-pi.vercel.app', // production frontend
+  'https://*.vercel.app' // allow all vercel apps
 ];
+
+// For production, allow all origins temporarily
+const corsOptions = process.env.NODE_ENV === 'production' ? {
+  origin: '*',
+  credentials: false
+} : {
+  origin: allowedOrigins,
+  credentials: true
+};
 
 const app = express();
 app.use(helmet());
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // API routes
@@ -66,8 +73,9 @@ const MONGO_URI = process.env.MONGO_URI;
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
+    origin: process.env.NODE_ENV === 'production' ? '*' : 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+    credentials: false
   }
 });
 

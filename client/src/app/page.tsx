@@ -31,11 +31,22 @@ interface FailedJob {
 }
 
 interface JobDetail {
-  jobId: string;
-  title: string;
-  company: string;
-  location: string;
-  url: string;
+  jobId?: string;
+  title?: string;
+  summary?: string;
+  company?: string;
+  author?: string;
+  location?: string;
+  'job:location'?: string;
+  url?: string;
+  link?: string;
+  category?: string;
+  'job:category'?: string;
+  jobType?: string;
+  'job:type'?: string;
+  type?: string;
+  source?: string;
+  [key: string]: any; // Allow additional properties
 }
 
 interface ImportLog {
